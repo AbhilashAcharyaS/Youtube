@@ -6,7 +6,7 @@ import MainContainer from './MainContainer'
 const Body = () => {
   return (
     <div>
-        <div className='flex'>
+        <div className='flex pt-20'>
             <Sidebar/>
             <MainContainer/>
         </div>

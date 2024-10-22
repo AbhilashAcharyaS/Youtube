@@ -1,14 +1,24 @@
 import React from 'react'
 import { Hamburger_Menu_Icon,USER_ICON, Youtube_Logo } from '../Utils/constants'
+import ButtonList from './ButtonList'
+import { useDispatch } from 'react-redux'
+import { toggleMenu } from '../Utils/appSlice'
 
 const Header = () => {
+
+  const dispatch= useDispatch();
+  const onHamMenuClick = ()=>{
+    dispatch(toggleMenu());
+  }
+
   return (
-    <div className='flex justify-between py-4 shadow-md'>
+    <div className='flex justify-between py-4 shadow-md fixed w-full z-20 bg-white'>
 
         <div className='flex w-3/12'>
-        <img className='h-8 mx-4' src={Hamburger_Menu_Icon} alt="HamburgerMenu" />
-
+        <img onClick={onHamMenuClick} className='h-8 mx-4 cursor-pointer' src={Hamburger_Menu_Icon} alt="HamburgerMenu" />
+        <a href='/'>
         <img className='h-6 m-1' src={Youtube_Logo} alt="Youtube Logo" />
+        </a>
         </div>
         <div className=' w-6/12'>
             <input className='border border-gray-400 w-4/5 p-2 pt-[9px] rounded-l-full text-center' type="text" placeholder='Search' />
