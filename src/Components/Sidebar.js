@@ -10,11 +10,11 @@ const Sidebar = () => {
 
   if(!isMenuOpen) return (
     <div className='w-1/12 h-screen shadow-md px-2'>
-      <div className='py-4'>
-        <p className='font-semibold text-sm py-4'>Home</p>
-        <p className='font-semibold text-sm py-4'>Shorts</p>
-        <p className='font-semibold text-sm py-4'>Subscription</p>
-        <p className='font-semibold text-sm py-4'>You</p>
+      <div className='py-4 text-center'>
+        <p className='font-semibold text-xs py-4'>Home</p>
+        <p className='font-semibold text-xs py-4'>Shorts</p>
+        <p className='font-semibold text-xs py-4'>Subscriptions</p>
+        <p className='font-semibold text-xs py-4'>You</p>
       </div>
       </div>
   );
