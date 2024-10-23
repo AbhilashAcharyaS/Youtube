@@ -3,7 +3,7 @@ import Button from './Button'
 
 const ButtonList = () => {
 
-  const tagList=["All","Coding","Music","AI","Live","Stocks","Podcasts","Movies","Kannada","Information Technology","Cricket","Football"];
+  const tagList=["All","Coding","Music","AI","Live","Stocks","Podcasts","Movies","Kannada","Technology","Cricket","Football"];
 
   return (
     <div className='flex '>

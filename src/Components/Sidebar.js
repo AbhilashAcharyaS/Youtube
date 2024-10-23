@@ -1,29 +1,30 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
 
   const isMenuOpen = useSelector(store=>store.app.isMenuOpen);
   const sideBar= useSelector(store=>store.app.showSideBar);
 
-  if(!sideBar) return null;
+  if(!isMenuOpen) return null;
 
-  if(!isMenuOpen) return (
-    <div className='w-1/12 h-screen shadow-md px-2'>
-      <div className='py-4 text-center'>
-        <p className='font-semibold text-xs py-4'>Home</p>
-        <p className='font-semibold text-xs py-4'>Shorts</p>
-        <p className='font-semibold text-xs py-4'>Subscriptions</p>
-        <p className='font-semibold text-xs py-4'>You</p>
-      </div>
-      </div>
-  );
+  // if(!isMenuOpen) return (
+  //   <div className='w-1/12 h-screen shadow-md px-2'>
+  //     <div className='py-4 text-center'>
+  //       <p className='font-semibold text-xs py-4'><Link to='/'>Home</Link></p>
+  //       <p className='font-semibold text-xs py-4'>Shorts</p>
+  //       <p className='font-semibold text-xs py-4'>Subscriptions</p>
+  //       <p className='font-semibold text-xs py-4'>You</p>
+  //     </div>
+  //     </div>
+  // );
 
   return (
     isMenuOpen && 
-    <div className='w-1/6 h-screen shadow-md pl-8'>
+    <div className='w-1/6 h-screen shadow-md px-8'>
       <div className='border-b py-4'>
-        <p className='font-semibold text-md py-1'>Home</p>
+        <p className='font-semibold text-md py-1'><Link to='/'>Home</Link></p>
         <p className='font-semibold text-md py-1'>Shorts</p>
         <p className='font-semibold text-md py-1'>Subscription</p>
       </div>
