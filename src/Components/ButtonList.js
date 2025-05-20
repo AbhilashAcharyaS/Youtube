@@ -7,7 +7,7 @@ const ButtonList = () => {
 
   return (
     <div className='flex '>
-        <div className=' flex overflow-x-scroll no-scrollbar'>
+        <div className=' flex overflow-x-scroll no-scrollbar ml-10'>
 
         { tagList.map((tag,index,tagList)=> <Button key={index} name={tag}></Button> )}    
       </div>
