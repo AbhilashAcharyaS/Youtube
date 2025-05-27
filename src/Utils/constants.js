@@ -11,3 +11,5 @@ export const USER_ICON = "https://static.vecteezy.com/system/resources/previews/
 export const YOUTUBE_POPULAR_VIDEO_URL=`https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=50&regionCode=IN&key=AIzaSyAmN8XLRteaWPTaAXhJNqwmFRIzVUgdSlg`
 
 export const YOUTUBE_SEARCH_API="http://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=";
+
+export const MAX_LIVE_CHAT_COUNT=50;
