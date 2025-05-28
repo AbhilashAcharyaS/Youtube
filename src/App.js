@@ -3,9 +3,10 @@ import Body from "./Components/Body";
 import Header from "./Components/Header";
 import logo from "./logo.svg";
 import store from "./Utils/store";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import MainContainer from "./Components/MainContainer";
 import WatchPage from "./Components/WatchPage";
+import SearchResult from "./Components/SearchResult";
 
 const appRouter = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const appRouter = createBrowserRouter([
       {
         path:'watch',
         element:<WatchPage/>
+      },
+      {
+        path:'search/:query',
+        element: <SearchResult/>
       }
     ]
   }

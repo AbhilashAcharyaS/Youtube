@@ -8,8 +8,10 @@ export const Search_Icon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" v
 
 export const USER_ICON = "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png";
 
-export const YOUTUBE_POPULAR_VIDEO_URL=`https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=50&regionCode=IN&key=AIzaSyAmN8XLRteaWPTaAXhJNqwmFRIzVUgdSlg`
+export const YOUTUBE_POPULAR_VIDEO_URL="https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=50&regionCode=IN&key="+process.env.REACT_APP_YOUTUBE_VIDEOS_API_KEY;
 
-export const YOUTUBE_SEARCH_API="http://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=";
+export const YOUTUBE_SUGGESTIONS_API="http://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=";
 
 export const MAX_LIVE_CHAT_COUNT=50;
+
+export const YOUTUBE_SEARCH_VIDEOS_API="https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&type=video&key="+process.env.REACT_APP_YOUTUBE_VIDEOS_API_KEY+"&q=";

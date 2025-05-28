@@ -3,12 +3,13 @@ import {
   Hamburger_Menu_Icon,
   USER_ICON,
   Youtube_Logo,
-  YOUTUBE_SEARCH_API,
+  YOUTUBE_SUGGESTIONS_API,
 } from "../Utils/constants";
 import ButtonList from "./ButtonList";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../Utils/appSlice";
-import { cacheResults } from "../Utils/searchSlice";
+import { cacheResults } from "../Utils/searchSuggestionSlice";
+// import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -16,11 +17,12 @@ const Header = () => {
   const [showSuggestion, setShowSuggestion] = useState(false);
   const searchCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
+  // const navigate = useNavigate();
 
   const getSearchSuggestion = async () => {
-    console.log("API Call - ", searchQuery);
+    // console.log("API Call - ", searchQuery);
 
-    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    const data = await fetch(YOUTUBE_SUGGESTIONS_API + searchQuery);
     const json = await data.json();
     // const arr= JSON.parse(json)
     // console.log(json[1]);
@@ -51,7 +53,7 @@ const Header = () => {
   };
 
   const search=()=>{
-    
+    window.location.href="/search/"+searchQuery;
   }
 
   return (
@@ -78,8 +80,10 @@ const Header = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
               onFocus={() => setShowSuggestion(true)}
               // onBlur={() => setShowSuggestion(false)}
-            />
-            <button onClick={search} className="border border-gray-400 w-1/12 p-2 pb-[13px] rounded-r-full bg-gray-200">
+            /> 
+            {searchQuery && <button onClick={()=>setSearchQuery("")} className="fixed top-6 -ml-10 hover:bg-slate-400 px-2 rounded-xl">X</button>}
+
+            <button onClick={search} className="border border-gray-400 w-1/12 p-2 pb-[13px] rounded-r-full bg-gray-200 hover:bg-gray-400">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
