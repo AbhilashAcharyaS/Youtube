@@ -8,7 +8,7 @@ export const Search_Icon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" v
 
 export const USER_ICON = "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png";
 
-export const YOUTUBE_POPULAR_VIDEO_URL="https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=50&regionCode=IN&key="+process.env.REACT_APP_YOUTUBE_VIDEOS_API_KEY;
+export const YOUTUBE_POPULAR_VIDEO_URL="https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=9&regionCode=IN&key="+process.env.REACT_APP_YOUTUBE_VIDEOS_API_KEY;
 
 export const YOUTUBE_SUGGESTIONS_API="http://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=";
 

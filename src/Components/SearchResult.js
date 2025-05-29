@@ -29,7 +29,7 @@ const SearchResult = () => {
   return (
     <div>
         <ButtonList/>
-        {searchVideos.length>0 && searchVideos[0]?.result.map((vid)=>(<SearchPageVideoCard info={vid} key={vid.id.videoId} />)) }
+        {searchVideos.length>0 && searchVideos[0]?.result.map((vid)=>(<SearchPageVideoCard info={vid} key={vid.id.videoId} watchPage={false} />)) }
         {/* {
             !(searchVideos[0]?.result) && <h1 className='mt-10 text-center'>No Vidoes found for the search query!</h1>
         } */}

@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { closeMenu} from '../Utils/appSlice';
 import { useSearchParams } from 'react-router-dom';
 import CommentsContainer from './CommentsContainer';
 import LiveChat from './LiveChat';
+import SearchPageVideoCard from './SearchPageVideoCard';
+import { YOUTUBE_POPULAR_VIDEO_URL } from '../Utils/constants';
 
 const WatchPage = () => {
 
@@ -15,6 +17,19 @@ const WatchPage = () => {
     useEffect(()=>{
         dispatch(closeMenu())
     },[])
+
+    const [videos, setVideos]= useState([]);
+      const getPopularVideos = async()=>{    
+        const data= await fetch(YOUTUBE_POPULAR_VIDEO_URL);
+        const json= await data.json();
+        console.log(json.items);
+        setVideos(json.items);
+      }
+      useEffect(()=>{
+        getPopularVideos()
+      },[])
+
+
   return (
     <div className='pl-12 flex flex-col w-full'>
       <div className='flex w-full'>
@@ -25,8 +40,14 @@ const WatchPage = () => {
           <LiveChat/>
         </div>
       </div>
-      <div className='w-[800px]'>
-        <CommentsContainer/>
+      <div className='flex'>
+        <div className='w-[800px]'><CommentsContainer/></div>
+        <div className='mx-4'>
+          <h3 className='text-center font-bold text-lg my-4'>Recommended Videos</h3>
+          <div className='max-w-[380px]'>
+            {videos.map((vid)=>(<SearchPageVideoCard info={vid} key={vid.id} watchPage={true} />))}
+          </div>
+        </div>
       </div>
     </div>
   )
