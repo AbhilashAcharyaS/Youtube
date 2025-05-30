@@ -6,6 +6,7 @@ import CommentsContainer from './CommentsContainer';
 import LiveChat from './LiveChat';
 import SearchPageVideoCard from './SearchPageVideoCard';
 import { YOUTUBE_POPULAR_VIDEO_URL } from '../Utils/constants';
+import RecommendedVideos from './RecommendedVideos';
 
 const WatchPage = () => {
 
@@ -15,6 +16,7 @@ const WatchPage = () => {
     const VideoKey= searchParams.get('v');
     
     useEffect(()=>{
+        window.scrollTo({top:0, behavior:"smooth"})
         dispatch(closeMenu())
     },[])
 
@@ -45,7 +47,7 @@ const WatchPage = () => {
         <div className='mx-4'>
           <h3 className='text-center font-bold text-lg my-4'>Recommended Videos</h3>
           <div className='max-w-[380px]'>
-            {videos.map((vid)=>(<SearchPageVideoCard info={vid} key={vid.id} watchPage={true} />))}
+            {videos.map((vid)=>(<RecommendedVideos info={vid} key={vid.id} />))}
           </div>
         </div>
       </div>

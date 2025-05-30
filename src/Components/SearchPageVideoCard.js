@@ -1,50 +1,33 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-const SearchPageVideoCard = ({info}, {watchPage}) => {
-    // console.log(info);
-    const {channelTitle,description,publishTime,thumbnails,title} = info?.snippet;
-    const navigate=useNavigate();
+const SearchPageVideoCard = ({ info }) => {
+  // console.log(info);
+  const { channelTitle, description, publishTime, thumbnails, title } =
+    info?.snippet;
+  const navigate = useNavigate();
 
-    const handleClick=()=>{
-        // console.log(info.id);
-        // if(watchPage){
-        //     navigate("/watch?v="+info?.id)
-        // }
-        // else{
-            navigate("/watch?vx="+info?.id?.videoId)
-        // }
-    }
+  const handleClick = () => {
+    navigate("/watch?v=" + info?.id?.videoId);
+    window.scrollTo({top:0, behavior:"smooth"})
+  };
 
-    if(!watchPage){
-        return (<div className='flex my-4 w-full' onClick={()=>handleClick()}>
-        <div className='w-1/2'>
-            <img src={thumbnails.high.url} alt="video" className=' aspect-video rounded-xl hover:scale-105 cursor-pointer' />
-        </div>
-        <div className='flex flex-col w-1/2 px-2'>
-            <h3 className='font-semibold py-2 text-xs'>{title}</h3>
-           {channelTitle && <p className='font-bold py-1 text-xs'>{channelTitle}</p>}
-            {watchPage && <p className='h-[100px] overflow-hidden text-xs'>{description}</p>}
-        </div>
-    </div>)
-    }
-    else
   return (
-    
-        <Link to={"/watch?v="+info.id} >
-        <div className='flex my-4 w-full'>
-        <div className='w-1/2'>
-            <img src={thumbnails.high.url} alt="video" className=' aspect-video rounded-xl hover:scale-105 cursor-pointer' />
-        </div>
-        <div className='flex flex-col w-1/2 px-2'>
-            <h3 className='font-semibold py-2 text-xs'>{title}</h3>
-           {channelTitle && <p className='font-bold py-1 text-xs'>{channelTitle}</p>}
-            {watchPage && <p className='h-[100px] overflow-hidden text-xs'>{description}</p>}
-        </div>
+    <div className="flex my-4 w-full pl-20" onClick={() => handleClick()}>
+      <div className="w-1/2">
+        <img
+          src={thumbnails.high.url}
+          alt="video"
+          className="w-[550px] aspect-video rounded-3xl hover:scale-105 cursor-pointer"
+        />
+      </div>
+      <div className="flex flex-col w-1/2 pr-12">
+        <h3 className="font-semibold py-2 text-xl">{title}</h3>       
+        <p className="font-bold py-2 text-md text-slate-600">{channelTitle}</p>
+        <p className="h-[100px] overflow-hidden text-sm">{description}</p>
+      </div>
     </div>
-        </Link>
-    
-  )
-}
+  );
+};
 
-export default SearchPageVideoCard
+export default SearchPageVideoCard;
