@@ -102,8 +102,9 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="w-2/12">
-          <img className="h-10" src={USER_ICON} alt="userIcon" />
+        <div className="w-2/12 flex items-center justify-center">
+          <span>Developed By:</span> 
+          <a href="https://github.com/AbhilashAcharyaS" target="_blank"><img className="h-10 rounded-full hover:scale-110 cursor-pointer mx-2" src="https://avatars.githubusercontent.com/u/49024964?v=4" alt="userIcon" /> </a>
         </div>
       </div>
 
