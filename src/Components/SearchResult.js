@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { YOUTUBE_SEARCH_VIDEOS_API } from '../Utils/constants';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,26 +10,49 @@ const SearchResult = () => {
 
     const params= useParams();
     // console.log(params);
-    const dispatch= useDispatch();
-    const searchVideos=useSelector(store=>store.searchVideos?.videos);
+    // const dispatch= useDispatch();
+    // const searchVideos=useSelector(store=>store.searchVideos?.videos);
+    const [pageToken,setPageToken]= useState(null);
+    const [videos,setVideos] = useState([]);
 
     const getSearchResult= async ()=>{
         const data= await fetch (YOUTUBE_SEARCH_VIDEOS_API+params.query);
         const json= await data.json();
-        // console.log(json.items);
-        dispatch(addVideos({query:params.query, result:json.items}))
+        // console.log(json);
+        // dispatch(addVideos({query:params.query, result:json.items}))
+        setVideos(json.items)
+        await setPageToken(json.nextPageToken);
     }
 
     useEffect(()=>{
-        if(!searchVideos[params.query])
+        // if(!searchVideos[params.query])
         getSearchResult();
     },[])
 
-    // if(searchVideos?.videos?.length==0) return(<><ButtonList/> <h1 className='mt-10 text-center'>No Vidoes found for the search query!</h1> </>) 
+    const handleInfiniteScrollSearch=async()=>{
+        if(window.innerHeight+ document.documentElement.scrollTop+1 >= document.documentElement.scrollHeight){
+            console.log("Api call with ", pageToken);
+            const data= await fetch(YOUTUBE_SEARCH_VIDEOS_API+params.query+"&pageToken="+pageToken);
+            const json= await data.json();
+            // dispatch(addVideos({query:params.query,result:json.items}));
+            let unique= new Set([...videos, ...json.items]);
+            // const uniqueArr= Array.from(unique);
+            setVideos(Array.from(unique));
+            setPageToken(json?.nextPageToken);
+        }
+    }
+
+    useEffect(()=>{
+        window.addEventListener("scroll",handleInfiniteScrollSearch);
+        return ()=>window.removeEventListener("scroll",handleInfiniteScrollSearch);
+    },[pageToken])
+
+    if(!videos || videos.length==0) return(<div className='w-full'> <ButtonList/> <h1 className='my-20 text-center text-xl'>No Vidoes found for the search query!</h1> </div>) ;
+
   return (
     <div>
         <ButtonList/>
-        {searchVideos.length>0 && searchVideos[0]?.result.map((vid)=>(<SearchPageVideoCard info={vid} key={vid.id.videoId} watchPage={false} />)) }
+        {videos?.map((vid)=>(<SearchPageVideoCard info={vid} key={vid.id?.videoId}/>)) }
         {/* {
             !(searchVideos[0]?.result) && <h1 className='mt-10 text-center'>No Vidoes found for the search query!</h1>
         } */}
