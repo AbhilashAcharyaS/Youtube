@@ -1,5 +1,6 @@
 import React from "react";
 import { USER_ICON } from "../Utils/constants";
+import { useSelector } from "react-redux";
 
 const commentsData = [
   {
@@ -44,8 +45,9 @@ const commentsData = [
 
 const Comment = ({ data }) => {
   const { name, text, replies } = data;
+  const darkMode= useSelector(store=>store.app.darkMode)
   return (
-    <div className="flex bg-gray-200 w-full my-1 p-2 rounded-xl">
+    <div className={`${darkMode? "dark:bg-gray-700":" bg-gray-200 "} flex   w-full my-1 p-2 rounded-xl`}>
       <div>
         <img className="w-16 h-10" src={USER_ICON} alt="user" />
       </div>
@@ -63,7 +65,7 @@ const CommentsList = ({ comments }) => {
       {comments.map((com, index) => (
         <div key={index}>
           <Comment data={com} />
-          <div className="ml-5 pl-5 border border-l-black border-r-white">
+          <div className="ml-5 pl-5 border border-l-black border-r-transparent">
             <CommentsList comments={com.replies}/>
           </div>
         </div>
@@ -73,6 +75,8 @@ const CommentsList = ({ comments }) => {
 };
 
 const CommentsContainer = () => {
+
+  
   return (
     <div>
       <h2 className="text-lg font-bold py-4">Comments:</h2>

@@ -1,4 +1,4 @@
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import Body from "./Components/Body";
 import Header from "./Components/Header";
 import logo from "./logo.svg";
@@ -31,9 +31,14 @@ const appRouter = createBrowserRouter([
 
 
 function App() {
+
+  const darkMode= useSelector(store=>store.app.darkMode);
+
+  console.log(darkMode);
+  
   return (
     <Provider store={store}>
-      <div className="no-scrollbar">
+      <div className={`${darkMode? " bg-black text-white" : "bg-white text-black"} no-scrollbar bg-black text-white`}>
         <Header />
         <RouterProvider router={appRouter} />
       </div>

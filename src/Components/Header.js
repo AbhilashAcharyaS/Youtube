@@ -62,7 +62,7 @@ const Header = () => {
 
   return (
     <div>
-      <div className={`${darkMode?"bg-black text-white":"bg-white"} flex justify-between py-4 shadow-md fixed w-full z-20`}>
+      <div className={`${darkMode?"bg-black text-white":"bg-white text-black"} flex justify-between py-4 shadow-md fixed w-full z-20`}>
         <div className="flex w-3/12">
           <img
             onClick={onHamMenuClick}
@@ -113,7 +113,8 @@ const Header = () => {
 
         <div className="w-2/12 flex items-center justify-center">
           <span>Developed By:</span> 
-          <a href="https://github.com/AbhilashAcharyaS" target="_blank"><img className="h-10 rounded-full hover:scale-125 cursor-pointer mx-2" src="https://avatars.githubusercontent.com/u/49024964?v=4" alt="userIcon" /> </a>
+          {/* <a href="https://github.com/AbhilashAcharyaS" target="_blank"><img className="h-10 rounded-full hover:scale-125 cursor-pointer mx-2" src="https://avatars.githubusercontent.com/u/49024964?v=4" alt="userIcon" /> </a> */}
+          <a href="https://www.linkedin.com/in/abhilash-acharya-56ab61191/" target="_blank"><img className="h-10 rounded-full hover:scale-125 cursor-pointer mx-2" src="https://avatars.githubusercontent.com/u/49024964?v=4" alt="userIcon" /> </a>
         </div>
       </div>
 

@@ -40,12 +40,12 @@ const VideoContainer = () => {
     return ()=>window.removeEventListener("scroll",handleInfiniteScroll)
   },[pageToken])
 
-  if(!videos){ window.removeEventListener("scroll",handleInfiniteScroll); return <h1 className='text-center text-xl my-20'>No Videos Available now! Check your API quota limit!</h1>}
+  if(!videos){ return <h1 className='text-center text-xl my-20'>No Videos Available now! Check your API quota limit!</h1>}
   return (
     <div>
       <div className='flex flex-wrap'>
         {videos?.map((video)=>
-        <VideoCard key={video.id} info={video}/>
+        <VideoCard key={video.id?.videoId} info={video}/>
          )}
         
       </div>
