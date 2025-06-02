@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import {
   Hamburger_Menu_Icon,
+  Hamburger_Menu_Icon_Dark_Mode,
   USER_ICON,
   Youtube_Logo,
+  Youtube_Logo_Dark_Mode,
   YOUTUBE_SUGGESTIONS_API,
 } from "../Utils/constants";
 import ButtonList from "./ButtonList";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleMenu } from "../Utils/appSlice";
+import { toggleDarkMode, toggleMenu } from "../Utils/appSlice";
 import { cacheResults } from "../Utils/searchSuggestionSlice";
 // import { useNavigate } from "react-router-dom";
 
@@ -18,6 +20,8 @@ const Header = () => {
   const searchCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
   // const navigate = useNavigate();
+
+  const darkMode = useSelector(store=>store.app.darkMode);
 
   const getSearchSuggestion = async () => {
     // console.log("API Call - ", searchQuery);
@@ -58,22 +62,23 @@ const Header = () => {
 
   return (
     <div>
-      <div className="flex justify-between py-4 shadow-md fixed w-full z-20 bg-white">
+      <div className={`${darkMode?"bg-black text-white":"bg-white"} flex justify-between py-4 shadow-md fixed w-full z-20`}>
         <div className="flex w-3/12">
           <img
             onClick={onHamMenuClick}
             className="h-8 mx-4 cursor-pointer"
-            src={Hamburger_Menu_Icon}
+            src={darkMode? Hamburger_Menu_Icon_Dark_Mode
+ :Hamburger_Menu_Icon}
             alt="HamburgerMenu"
           />
           <a href="/">
-            <img className="h-6 m-1" src={Youtube_Logo} alt="Youtube Logo" />
+            <img className={darkMode?"h-8 scale-150": "h-6 m-1"} src={darkMode? Youtube_Logo_Dark_Mode :Youtube_Logo} alt="Youtube Logo" />
           </a>
         </div>
-        <div className=" w-6/12">
+        <div className=" w-1/2">
           <div>
             <input
-              className="border border-gray-400 w-4/5 p-2 pt-[9px] rounded-l-full text-center"
+              className={` ${darkMode?"bg-black":"bg-white"} border border-gray-400 w-4/5 p-2 pt-[9px] rounded-l-full text-center `}
               type="text"
               placeholder="Search"
               value={searchQuery}
@@ -83,7 +88,7 @@ const Header = () => {
             /> 
             {searchQuery && <button onClick={()=>setSearchQuery("")} className="fixed top-6 -ml-10 hover:bg-slate-400 px-2 rounded-xl">X</button>}
 
-            <button onClick={search} className="border border-gray-400 w-1/12 p-2 pb-[13px] rounded-r-full bg-gray-200 hover:bg-gray-400">
+            <button onClick={search} className={`${darkMode?"bg-gray-700 hover:bg-gray-500":"bg-gray-200 hover:bg-gray-400"} border border-gray-400 w-1/12 p-2 pb-[13px] rounded-r-full `}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -102,14 +107,18 @@ const Header = () => {
           </div>
         </div>
 
+        <div>
+          <img  src={darkMode?"https://cdn.vectorstock.com/i/1000v/33/08/light-mode-dark-glyph-ui-icon-vector-43353308.jpg" : "https://img.icons8.com/ios-filled/50/do-not-disturb-2.png"} onClick={()=>{dispatch(toggleDarkMode())}} alt="theme" className="w-10 cursor-pointer"/>          
+        </div>
+
         <div className="w-2/12 flex items-center justify-center">
           <span>Developed By:</span> 
-          <a href="https://github.com/AbhilashAcharyaS" target="_blank"><img className="h-10 rounded-full hover:scale-110 cursor-pointer mx-2" src="https://avatars.githubusercontent.com/u/49024964?v=4" alt="userIcon" /> </a>
+          <a href="https://github.com/AbhilashAcharyaS" target="_blank"><img className="h-10 rounded-full hover:scale-125 cursor-pointer mx-2" src="https://avatars.githubusercontent.com/u/49024964?v=4" alt="userIcon" /> </a>
         </div>
       </div>
 
       {showSuggestion && suggestions.length > 0 && (
-        <div className="w-[30rem] z-20 mx-auto fixed right-0 left-0 bg-white px-2 py-2 mt-[74px] rounded-xl border-2 border-blue-400 shadow-xl">
+        <div className={`${darkMode?"bg-black text-white":"bg-white"} w-[30rem] z-20 mx-auto fixed right-0 left-0 px-2 py-2 mt-[74px] rounded-xl border-2 border-blue-400 shadow-xl`}>
           <ul className="">
             {suggestions.map((sug) => (
               <div key={sug}>
@@ -119,7 +128,7 @@ const Header = () => {
                     setSearchQuery(sug);
                     setShowSuggestion(false);
                   }}
-                  className="py-1 px-4 my-1 hover:bg-gray-100 cursor-pointer "
+                  className={`${darkMode?"hover:bg-gray-800":"hover:bg-gray-100"} py-1 px-4 my-1 cursor-pointer `}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
