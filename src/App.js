@@ -33,8 +33,6 @@ const appRouter = createBrowserRouter([
 function App() {
 
   const darkMode= useSelector(store=>store.app.darkMode);
-
-  console.log(darkMode);
   
   return (
     <Provider store={store}>

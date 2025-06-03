@@ -57,6 +57,8 @@ const Header = () => {
   };
 
   const search=()=>{
+    if(searchQuery.trim()=="") return;
+    else 
     window.location.href="/search/"+searchQuery;
   }
 
@@ -108,7 +110,7 @@ const Header = () => {
         </div>
 
         <div>
-          <img  src={darkMode?"https://cdn.vectorstock.com/i/1000v/33/08/light-mode-dark-glyph-ui-icon-vector-43353308.jpg" : "https://img.icons8.com/ios-filled/50/do-not-disturb-2.png"} onClick={()=>{dispatch(toggleDarkMode())}} alt="theme" className="w-10 cursor-pointer"/>          
+          <img  src={darkMode?"https://cdn.vectorstock.com/i/1000v/33/08/light-mode-dark-glyph-ui-icon-vector-43353308.jpg" : "https://img.icons8.com/ios-filled/100/do-not-disturb-2.png"} onClick={()=>{dispatch(toggleDarkMode())}} alt="theme" className="w-10 cursor-pointer"/>          
         </div>
 
         <div className="w-2/12 flex items-center justify-center">
