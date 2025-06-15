@@ -64,23 +64,25 @@ const Header = () => {
 
   return (
     <div>
-      <div className={`${darkMode?"bg-black text-white":"bg-white text-black"} flex justify-between py-4 shadow-md fixed w-full z-20`}>
-        <div className="flex w-3/12">
+      <div className={`${darkMode?"bg-black text-white":"bg-white text-black"} flex flex-row justify-between py-4 shadow-md fixed w-full z-20`}>
+
+        <div className="flex w-5/12 sm:w-3/12">
           <img
             onClick={onHamMenuClick}
-            className="h-8 mx-4 cursor-pointer"
+            className={darkMode?"h-10 mx-2":"h-8 mx-0 sm:mx-4 cursor-pointer"}
             src={darkMode? Hamburger_Menu_Icon_Dark_Mode
  :Hamburger_Menu_Icon}
             alt="HamburgerMenu"
           />
           <a href="/">
-            <img className={darkMode?"h-8 scale-150": "h-6 m-1"} src={darkMode? Youtube_Logo_Dark_Mode :Youtube_Logo} alt="Youtube Logo" />
+            <img className={darkMode?"h-8 scale-150 mt-1": "h-6 m-1"} src={darkMode? Youtube_Logo_Dark_Mode :Youtube_Logo} alt="Youtube Logo" />
           </a>
         </div>
-        <div className=" w-1/2">
+
+        <div className="w-4/12 sm:w-1/2">
           <div>
             <input
-              className={` ${darkMode?"bg-black":"bg-white"} border border-gray-400 w-4/5 p-2 pt-[9px] rounded-l-full text-center `}
+              className={` ${darkMode?"bg-black":"bg-white"} border border-gray-400 w-4/6 sm:w-4/5 p-2 pt-[9px] rounded-l-full text-left sm:text-center `}
               type="text"
               placeholder="Search"
               value={searchQuery}
@@ -88,9 +90,9 @@ const Header = () => {
               onFocus={() => setShowSuggestion(true)}
               // onBlur={() => setShowSuggestion(false)}
             /> 
-            {searchQuery && <button onClick={()=>setSearchQuery("")} className="fixed top-6 -ml-10 hover:bg-slate-400 px-2 rounded-xl">X</button>}
+            {searchQuery && <button onClick={()=>setSearchQuery("")} className="fixed top-6 -ml-8 sm:-ml-10 bg-slate-400 sm:bg-transparent sm:hover:bg-slate-400 px-2 rounded-xl">X</button>}
 
-            <button onClick={search} className={`${darkMode?"bg-gray-700 hover:bg-gray-500":"bg-gray-200 hover:bg-gray-400"} border border-gray-400 w-1/12 p-2 pb-[13px] rounded-r-full `}>
+            <button onClick={search} className={`${darkMode?"bg-gray-700 hover:bg-gray-500":"bg-gray-200 hover:bg-gray-400"} border border-gray-400 p-2 pb-[13px] rounded-r-full `}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -109,19 +111,19 @@ const Header = () => {
           </div>
         </div>
 
-        <div>
+        <div className="">
           <img  src={darkMode?"https://cdn.vectorstock.com/i/1000v/33/08/light-mode-dark-glyph-ui-icon-vector-43353308.jpg" : "https://img.icons8.com/ios-filled/100/do-not-disturb-2.png"} onClick={()=>{dispatch(toggleDarkMode())}} alt="theme" className="w-10 cursor-pointer"/>          
         </div>
 
-        <div className="w-2/12 flex items-center justify-center">
-          <span>Developed By:</span> 
+        <div className="flex items-center justify-center">
+          <span className="hidden sm:inline-block">Developed By:</span> 
           {/* <a href="https://github.com/AbhilashAcharyaS" target="_blank"><img className="h-10 rounded-full hover:scale-125 cursor-pointer mx-2" src="https://avatars.githubusercontent.com/u/49024964?v=4" alt="userIcon" /> </a> */}
           <a href="https://www.linkedin.com/in/abhilash-acharya-56ab61191/" target="_blank"><img className="h-10 rounded-full hover:scale-125 cursor-pointer mx-2" src="https://avatars.githubusercontent.com/u/49024964?v=4" alt="userIcon" /> </a>
         </div>
       </div>
 
       {showSuggestion && suggestions.length > 0 && (
-        <div className={`${darkMode?"bg-black text-white":"bg-white"} w-[30rem] z-20 mx-auto fixed right-0 left-0 px-2 py-2 mt-[74px] rounded-xl border-2 border-blue-400 shadow-xl`}>
+        <div className={`${darkMode?"bg-black text-white":"bg-white"} w-10/12 sm:w-[30rem] z-20 mx-auto fixed right-0 left-0 px-2 py-2 mt-[74px] rounded-xl border-2 border-blue-400 shadow-xl`}>
           <ul className="">
             {suggestions.map((sug) => (
               <div key={sug}>
