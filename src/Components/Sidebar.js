@@ -24,7 +24,7 @@ const Sidebar = () => {
 
   return (
     isMenuOpen && 
-    <div className={`${darkMode?" bg-black border-white":"bg-white border-black "} w-1/6 -mt-2 h-screen shadow-md px-8 fixed z-10  border border-r-2 border-l-0`}>
+    <div className={`${darkMode?" bg-black border-white":"bg-white border-black "} w-1/2 sm:w-1/6 -mt-2 h-screen shadow-md px-8 fixed z-10  border border-r-2 border-l-0`}>
       <div className='border-b py-4'>
         <p className='font-semibold text-md py-1'><Link to='/'>Home</Link></p>
         <p className='font-semibold text-md py-1'>Shorts</p>

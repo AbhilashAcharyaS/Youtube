@@ -43,7 +43,7 @@ const VideoContainer = () => {
   if(!videos){ return <h1 className='text-center text-xl my-20'>No Videos Available now! Check your API quota limit!</h1>}
   return (
     <div>
-      <div className='flex flex-wrap'>
+      <div className='flex flex-col sm:flex-row flex-wrap'>
         {videos?.map((video)=>
         <VideoCard key={video.id?.videoId || video.id} info={video}/>
          )}

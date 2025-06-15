@@ -21,7 +21,7 @@ const ButtonList = () => {
   if(!tagList) return;
 
   return (
-        <div className=' flex justify-between overflow-x-scroll no-scrollbar ml-20'>
+        <div className=' flex justify-between overflow-x-scroll no-scrollbar sm:ml-20 my-1 sm:my-0'>
 
         { tagList.map((tag,index,tagList)=> <Button key={index} name={tag}></Button> )}    
       </div>
