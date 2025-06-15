@@ -36,7 +36,7 @@ function App() {
   
   return (
     <Provider store={store}>
-      <div className={`${darkMode? " bg-black text-white" : "bg-white text-black"} no-scrollbar bg-black text-white`}>
+      <div className={`${darkMode? " bg-black text-white" : "bg-white text-black"} no-scrollbar`}>
         <Header />
         <RouterProvider router={appRouter} />
       </div>
