@@ -4,7 +4,7 @@ import { closeMenu} from '../Utils/appSlice';
 import { useSearchParams } from 'react-router-dom';
 import CommentsContainer from './CommentsContainer';
 import LiveChat from './LiveChat';
-import SearchPageVideoCard from './SearchPageVideoCard';
+// import SearchPageVideoCard from './SearchPageVideoCard';
 import { YOUTUBE_POPULAR_VIDEO_URL } from '../Utils/constants';
 import RecommendedVideos from './RecommendedVideos';
 

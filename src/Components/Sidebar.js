@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Sidebar = () => {
 
   const isMenuOpen = useSelector(store=>store.app.isMenuOpen);
-  const sideBar= useSelector(store=>store.app.showSideBar);
+  // const sideBar= useSelector(store=>store.app.showSideBar);
   const darkMode= useSelector(store=>store.app.darkMode);
 
 

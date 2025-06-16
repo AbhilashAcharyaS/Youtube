@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidebar from './Sidebar'
-import VideoContainer from './VideoContainer'
-import MainContainer from './MainContainer'
+// import VideoContainer from './VideoContainer'
+// import MainContainer from './MainContainer'
 import { Outlet } from 'react-router-dom'
 
 const Body = () => {

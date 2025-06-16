@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { YOUTUBE_SEARCH_VIDEOS_API } from '../Utils/constants';
-import { useDispatch, useSelector } from 'react-redux';
-import { addVideos } from '../Utils/searchVideoSlice';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { addVideos } from '../Utils/searchVideoSlice';
 import SearchPageVideoCard from './SearchPageVideoCard';
 import ButtonList from './ButtonList';
 

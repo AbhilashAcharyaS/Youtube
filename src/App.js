@@ -1,9 +1,9 @@
 import { Provider, useSelector } from "react-redux";
 import Body from "./Components/Body";
 import Header from "./Components/Header";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import store from "./Utils/store";
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainContainer from "./Components/MainContainer";
 import WatchPage from "./Components/WatchPage";
 import SearchResult from "./Components/SearchResult";

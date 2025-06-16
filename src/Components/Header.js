@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import {
   Hamburger_Menu_Icon,
   Hamburger_Menu_Icon_Dark_Mode,
-  USER_ICON,
   Youtube_Logo,
   Youtube_Logo_Dark_Mode,
   YOUTUBE_SUGGESTIONS_API,
 } from "../Utils/constants";
-import ButtonList from "./ButtonList";
+// import ButtonList from "./ButtonList";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleDarkMode, toggleMenu } from "../Utils/appSlice";
 import { cacheResults } from "../Utils/searchSuggestionSlice";
@@ -34,9 +33,9 @@ const Header = () => {
     dispatch(cacheResults({ [searchQuery]: json[1] }));
   };
 
-  const handleSugClick = (sug) => {
-    setSearchQuery(sug);
-  };
+  // const handleSugClick = (sug) => {
+  //   setSearchQuery(sug);
+  // };
 
   useEffect(() => {
     const DebounceTimer = setTimeout(() => {
@@ -118,7 +117,7 @@ const Header = () => {
         <div className="flex items-center justify-center">
           <span className="hidden sm:inline-block">Developed By:</span> 
           {/* <a href="https://github.com/AbhilashAcharyaS" target="_blank"><img className="h-10 rounded-full hover:scale-125 cursor-pointer mx-2" src="https://avatars.githubusercontent.com/u/49024964?v=4" alt="userIcon" /> </a> */}
-          <a href="https://www.linkedin.com/in/abhilash-acharya-56ab61191/" target="_blank"><img className="h-10 rounded-full hover:scale-125 cursor-pointer mx-2" src="https://avatars.githubusercontent.com/u/49024964?v=4" alt="userIcon" /> </a>
+          <a href="https://www.linkedin.com/in/abhilash-acharya-56ab61191/" target="_blank"><img className="h-10 rounded-full hover:scale-125 cursor-pointer mx-2" src="https://avatars.githubusercontent.com/u/49024964?v=4" alt="userIcon" rel="noreferrer" /> </a>
         </div>
       </div>
 

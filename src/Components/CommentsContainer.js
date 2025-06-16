@@ -44,7 +44,7 @@ const commentsData = [
 ];
 
 const Comment = ({ data }) => {
-  const { name, text, replies } = data;
+  const { name, text} = data;
   const darkMode= useSelector(store=>store.app.darkMode)
   return (
     <div className={`${darkMode? "dark:bg-gray-700":" bg-gray-200 "} flex   w-full my-1 p-2 rounded-xl`}>

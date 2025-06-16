@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react'
+// import React, { useEffect, useState } from 'react'
 import Button from './Button'
-import { YOUTUBE_VIDEO_CATEGORIES_API } from '../Utils/constants';
+// import { YOUTUBE_VIDEO_CATEGORIES_API } from '../Utils/constants';
 
 const ButtonList = () => {
 
   const tagList=["All","Coding","Music","AI","Live","Stocks","Podcasts","Movies","Kannada","Technology","Cricket","Football"];
 
-  const [tagLists, setTagList]= useState([]);
+  // const [tagLists, setTagList]= useState([]);
 
-  const getVideoCategories=async()=>{
-    const data= await fetch(YOUTUBE_VIDEO_CATEGORIES_API);
-    const json= await data.json();
-    const tags= json?.items?.map((x)=>x.snippet.title);
-    // console.log(tags);
-    setTagList(tags);
-  }
+  // const getVideoCategories=async()=>{
+  //   const data= await fetch(YOUTUBE_VIDEO_CATEGORIES_API);
+  //   const json= await data.json();
+  //   const tags= json?.items?.map((x)=>x.snippet.title);
+  //   // console.log(tags);
+  //   setTagList(tags);
+  // }
 
-  useEffect(()=>{getVideoCategories()},[])
+  // useEffect(()=>{getVideoCategories()},[])
 
   if(!tagList) return;
 

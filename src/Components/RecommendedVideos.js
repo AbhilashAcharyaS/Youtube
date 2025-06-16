@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const RecommendedVideos = ({info}) => {
-    const {channelTitle,description,publishTime,thumbnails,title} = info?.snippet;
+    const {channelTitle,thumbnails,title} = info?.snippet;
 
   return (
     <div>
